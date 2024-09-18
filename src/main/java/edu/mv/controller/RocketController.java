@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import java.util.List;
 import edu.mv.models.RocketDTO;
 import edu.mv.persistence.RocketNotFoundException;
 import edu.mv.service.RocketService;
@@ -30,8 +30,18 @@ public class RocketController {
         }
     }
 
+    @GetMapping("/rockets")
+    public List<RocketDTO> getAll() {
+        return rocketService.getAll();
+    }
+
     @PostMapping("/rocket")
     public void saveRocket(@RequestBody RocketDTO rocket) {
         rocketService.putRocket(rocket);
+    }
+
+    @PostMapping("/rocket/{rocketid}")
+    public void updateRocket(@PathVariable(value = "rocketid") final String id, @RequestBody RocketDTO rocket) throws RocketNotFoundException {
+        rocketService.updateRocket(Integer.valueOf(id), rocket);
     }
 }

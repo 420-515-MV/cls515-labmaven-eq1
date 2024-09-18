@@ -1,6 +1,8 @@
 package edu.mv.persistence;
 
-import java.util.Optional;
+import java.util.List;  // For handling lists of rockets
+import java.util.Optional;  // For handling Optional results from the repository
+import java.util.stream.Collectors;  // To convert Rocket list to RocketDTO list
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,25 @@ public class PersistenceService {
     public void save(RocketDTO Rocket) {
         rocketRepository.save(convertToRocketPersistence(Rocket));
     }
+
+    public List<RocketDTO> getAll() {
+        List<Rocket> rockets = (List<Rocket>) rocketRepository.findAll();
+        return rockets.stream()
+                .map(this::convertToRocketDTO)
+                .collect(Collectors.toList());
+    }
+    public void updateRocket(int id, RocketDTO updatedRocket) throws RocketNotFoundException {
+        Rocket oldRocket = rocketRepository.findById(id)
+                .orElseThrow(() -> new RocketNotFoundException(id));
+
+
+        oldRocket.setName(updatedRocket.getName());
+        oldRocket.setSorte(updatedRocket.getType());
+
+        rocketRepository.save(oldRocket);
+    }
+
+
 
     private Rocket convertToRocketPersistence(RocketDTO RocketDTO) {
         Rocket rocket = RocketMapper.INSTANCE.RocketDTOToRocket(RocketDTO);
