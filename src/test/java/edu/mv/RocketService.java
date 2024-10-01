@@ -7,7 +7,6 @@ import junit.framework.TestSuite;
 import edu.mv.models.RocketDTO;
 import edu.mv.persistence.PersistenceService;
 import edu.mv.persistence.RocketNotFoundException;
-import edu.mv.service.RocketService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,12 +23,12 @@ import static org.mockito.Mockito.when;
  */
 
 @ExtendWith(MockitoExtension.class)
-public class AppTest {
+public class RocketService {
     @Mock
     private PersistenceService persistenceService;
 
     @InjectMocks
-    private RocketService rocketService;
+    private edu.mv.service.RocketService rocketService;
 
     @Test
     public void testGetRocket() throws RocketNotFoundException {
