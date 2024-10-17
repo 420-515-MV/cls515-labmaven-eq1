@@ -8,10 +8,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="rocket5" />
       </profile>
+      <profile name="Annotation profile for cls515-labmaven-eq1" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.0/mapstruct-processor-1.6.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.0/mapstruct-1.6.0.jar" />
+        </processorPath>
+        <module name="cls515-labmaven-eq1" />
+      </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cls515-labmaven-eq1" options="-parameters" />
       <module name="rocket5" options="-parameters" />
     </option>
   </component>
