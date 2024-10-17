@@ -12,7 +12,7 @@
 
 
     <groupId>edu.mv</groupId>
-    <artifactId>rocket5mg</artifactId>
+    <artifactId>cls515-labmaven-eq1</artifactId>
     <version>2.0.1-SNAPSHOT</version>
 
     <properties>
