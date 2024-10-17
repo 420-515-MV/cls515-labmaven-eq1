@@ -6,18 +6,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
+        <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
 
     <groupId>edu.mv</groupId>
-    <artifactId>rocket5</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <artifactId>cls515-labmaven-eq1</artifactId>
+    <version>3.3.5</version>
 
     <properties>
         <java.version>17</java.version>
-        <spring.version>6.0.0</spring.version>
+        <spring.version>3.3.3</spring.version>
         <org.mapstruct.version>1.6.0</org.mapstruct.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -104,6 +104,26 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -49,6 +49,25 @@ public class RocketService {
         rocketService.putRocket(rocketDTO);
         verify(persistenceService).save(rocketDTO);
     }
+
+    @Test
+    public void testGetId() {
+        RocketDTO rocketDTO = new RocketDTO();
+        rocketDTO.setId(1);
+        int id = rocketDTO.getId();
+        assertEquals(1, id);
+    }
+
+    @Test
+    public void testGetType() {
+        RocketDTO rocketDTO = new RocketDTO();
+        rocketDTO.setType("rocket");
+        String type = rocketDTO.getType();
+        assertEquals("rocket", type);
+    }
+
+
+
     public void testApp()
     {
         assertTrue( true );
