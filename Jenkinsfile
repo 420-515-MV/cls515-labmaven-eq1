@@ -30,7 +30,7 @@ pipeline {
                 }
             }
         }
-        stage('push image to nexus')
+        stage('push image to nexus') {
             steps {
                     script {
                         sh 'echo ${NEXUS_PASSWORD} | docker login ${NEXUS_URL} --username ${DOCKER_USERNAME} --password-stdin'
