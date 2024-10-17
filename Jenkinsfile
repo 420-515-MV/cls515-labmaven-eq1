@@ -8,6 +8,11 @@ pipeline {
             NEXUS_PASSWORD = credentials('DEPLOY_USER_PASSWORD')
      }
     stages {
+        stage('clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
         stage('compile') {
             steps {
                 sh 'mvn compile'
