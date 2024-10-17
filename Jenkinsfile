@@ -33,7 +33,7 @@ pipeline {
         stage('docker build') {
             steps {
                 script {
-                    docker.build("rocket5mg")
+                    docker.build("${NEXUS_URL}/edu.mv/${ARTIFACT}:${VERSION}")
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
             steps {
                     script {
                         sh 'echo ${NEXUS_PASSWORD} | docker login ${NEXUS_URL} --username ${DOCKER_USERNAME} --password-stdin'
-                        docker.image("rocket5mg").push()
+                        docker.image("${NEXUS_URL}/edu.mv/${ARTIFACT}:${VERSION}").push()
                     }
             }
         }
