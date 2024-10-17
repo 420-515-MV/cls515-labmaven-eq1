@@ -6,6 +6,8 @@ pipeline {
             NEXUS_URL = "${NEXUS_1}"
             DOCKER_USERNAME = "${NEXUS_DOCKER_USERNAME}"
             NEXUS_PASSWORD = credentials('DEPLOY_USER_PASSWORD')
+            ARTIFACT = readMavenPom().getArtifactId()
+            VERSION = readMavenPom().getVersion()
      }
     stages {
         stage('clean') {
