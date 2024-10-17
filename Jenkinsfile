@@ -23,17 +23,19 @@ pipeline {
                 sh 'mvn package'
             }
         }
-
         stage('docker build') {
             steps {
-                sh docker.build("rocket5mg")
+                script {
+                    docker.build("rocket5mg")
+                }
             }
         }
-
         stage('push image to nexus')
             steps {
-                sh 'echo ${NEXUS_PASSWORD} | docker login ${NEXUS_URL} --username ${DOCKER_USERNAME} --password-stdin'
-                docker.image("rocket5mg").push()
+                    script {
+                        sh 'echo ${NEXUS_PASSWORD} | docker login ${NEXUS_URL} --username ${DOCKER_USERNAME} --password-stdin'
+                        docker.image("rocket5mg").push()
+                    }
             }
         }
     }
