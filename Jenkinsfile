@@ -19,9 +19,9 @@ pipeline {
             }
         }
         stage('package') {
-                    steps {
-                        sh 'mvn package'
-                    }
+            steps {
+                sh 'mvn package'
+            }
         }
 
         stage('docker build') {
