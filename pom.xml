@@ -12,12 +12,12 @@
 
 
     <groupId>edu.mv</groupId>
-    <artifactId>rocket5</artifactId>
+    <artifactId>rocket5mg</artifactId>
     <version>2.0.1-SNAPSHOT</version>
 
     <properties>
         <java.version>17</java.version>
-        <spring.version>6.0.0</spring.version>
+        <spring.version>3.3.3</spring.version>
         <org.mapstruct.version>1.6.0</org.mapstruct.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -104,6 +104,26 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
